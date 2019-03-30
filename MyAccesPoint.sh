@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+echo "works only for Grimm-Zentrum - by now (because greetings from sometimes worst eduroam ever)" 
 
 querry_meta () {
     selector_countOthersOnAp='[bgcolor="#ddddd0"] text{}'

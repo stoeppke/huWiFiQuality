@@ -19,7 +19,11 @@ main () {
     fi
 
 }
-
-main
+if which pup; then
+    main
+else
+    echo "eror: pup needs to be installed. See https://github.com/ericchiang/pup"
+    exit 0
+fi
 
 exit 1

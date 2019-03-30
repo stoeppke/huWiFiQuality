@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 
 querry_meta () {
+    selector_countOthersOnAp='[bgcolor="#ddddd0"] text{}'
     curr_ssid=$(/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -I | \
         awk -F ": " 'match ($1, /.*BSSID/) {printf "%s", $2}')
     for floor in $(seq 1 6)
     do
         url="https://www.cms.hu-berlin.de/de/dl/netze/wlan/stats/details/Berlin-MitteSchollstr1Grimm-Zentrum"$floor"Obergeschoss.details.html"    
-        echo $url
+        curl -s $url | pup $selector_countOthersOnAp | grep --after-context 3 --before-context 1 -i $curr_ssid
     done
 
 
